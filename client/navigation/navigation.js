@@ -1,4 +1,5 @@
-Template.navigation.rendered = function(){
+
+Template.navigation.rendered = function() {
     $('.navbar li').click(function(e) {
         $('.navbar li.active').removeClass('active');
         var $this = $(this);
@@ -8,3 +9,11 @@ Template.navigation.rendered = function(){
         //e.preventDefault();
     });
 };
+
+Template.navItems.helpers({
+    activeIfTemplateIs: function(template) {
+        var currentRoute = Router.current();
+        return currentRoute &&
+            template === currentRoute.lookupTemplate() ? 'active' : '';
+    }
+});
