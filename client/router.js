@@ -38,10 +38,19 @@ function SetupItemsRoutes() {
     _routerContext.route('itemList', {
         path: '/item/'
     });
-    _routerContext.route('itemDetails', {
-        path: '/item/details'
-    });
-    _routerContext.route('itemCreate', {
+     _routerContext.route('itemCreate', {
         path: 'item/create'
+    });
+    _routerContext.route('itemDetails', {
+        path: '/item/details/:_id',
+        data: function() { return Items.findOne(this.params._id) } 
+    });
+    _routerContext.route('itemEdit', {
+        path: 'item/edit/:_id',
+        data: function() { return Items.findOne(this.params._id) }
+    });
+   _routerContext.route('itemDelete', {
+        path: 'item/delete/:_id',
+        data: function() { return Items.findOne(this.params._id) }
     });
 }

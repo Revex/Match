@@ -2,14 +2,23 @@
     <h1>Items</h1>
 
     <a href="{{ pathFor 'itemCreate' }}">
-    	Create new Item
+        Create new Item
     </a>
-    <ul class="nav nav-list">
+    <br />
+    <br />
+    <table>
         {{#each Items}}
-        <li class="nav-header">
-            <a href="{{ pathFor 'itemDetails' }}"> 	{{name}} {{_id}} 
-            </a>
-        </li>
+        <tr>
+            <td style="min-width:100px;">
+                {{name}}
+            </td>
+            <td>
+                <a href="{{ pathFor 'itemDetails' }}"> Details</a> |
+                <a href="{{ pathFor 'itemEdit' }}">Edit</a>
+                |
+                <a href="{{ pathFor 'itemDelete' }}">Delete</a>
+            </td>
+        </tr>
         {{/each}}
-    </ul>
+    </table>
 </template>

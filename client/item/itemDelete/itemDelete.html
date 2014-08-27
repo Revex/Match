@@ -1,0 +1,13 @@
+<template name="itemDelete">
+    <h1>Item Delete</h1>
+    Item Name:
+    <span>{{name}}</span>
+    <input type="hidden" id="itemId" value="{{_id}}" />
+    <br />
+    <div class="alert">
+        Are you sure you want to permanently delete this?
+    </div>
+    <a href="{{pathFor 'itemList'}}">Go Back to Items List</a>
+    &nbsp;|&nbsp;
+    <button class="btn btn-danger">Delete</button>
+</template>
