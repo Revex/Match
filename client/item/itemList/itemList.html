@@ -1,0 +1,15 @@
+<template name="itemList">
+    <h1>Items</h1>
+
+    <a href="{{ pathFor 'itemCreate' }}">
+    	Create new Item
+    </a>
+    <ul class="nav nav-list">
+        {{#each Items}}
+        <li class="nav-header">
+            <a href="{{ pathFor 'itemDetails' }}"> 	{{name}} {{_id}} 
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+</template>

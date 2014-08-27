@@ -35,8 +35,13 @@ function SetupHomeRoutes() {
 }
 
 function SetupItemsRoutes() {
-    _routerContext.route('items', {
-        path: '/items/',
-        template: 'items'
+    _routerContext.route('itemList', {
+        path: '/item/'
+    });
+    _routerContext.route('itemDetails', {
+        path: '/item/details'
+    });
+    _routerContext.route('itemCreate', {
+        path: 'item/create'
     });
 }
