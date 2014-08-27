@@ -7,3 +7,7 @@ Template.itemCreate.events({
         Router.go('itemList');
     }
 });
+
+Template.itemCreate.rendered = function(){
+	$("#itemName").focus();
+};

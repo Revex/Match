@@ -9,7 +9,7 @@ Template.itemDetails.events({
         //hide the button/link that allows us to add a new note, doesn't make sense to have that on screen
         $("#createNewNote").hide();
     },
-    //click handler for when we press the submit new note text button
+    //click handler for when we press the submit new note button
     'click #submitNewNote': function() {
         //extract the value of the string inside the note text input 
         var noteText = $("#newNoteInputText").val();
@@ -34,6 +34,5 @@ Template.itemDetails.events({
         $("#submitNewNote").hide();
         //show the the button/link to add new note
         $("#createNewNote").show();
-
     }
 });

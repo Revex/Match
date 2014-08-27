@@ -9,17 +9,29 @@
     <table>
         {{#each Items}}
         <tr>
-            <td style="min-width:100px;">
+            <td style="min-width:100px; vertical-align:top;">
                 {{name}}
             </td>
-            <td>
-                <a href="{{ pathFor 'itemDetails' }}"> Details</a> 
-                |
+            <td style="min-width:150px;">
+                Notes ({{ notes.length }}): {{#each notes}}
+                <div style="margin-left:15px;">
+                    {{text}}
+                </div>
+                {{/each}}
+            </td>
+            <td style="vertical-align:top;">
+                <a href="{{ pathFor 'itemDetails' }}"> Details</a> |
                 <a href="{{ pathFor 'itemEdit' }}">Edit</a>
                 |
                 <a href="{{ pathFor 'itemDelete' }}">Delete</a>
             </td>
         </tr>
+        <tr>
+            <td>
+               <div style="height:15px;"></div> 
+            </td>
+        </tr>
+
         {{/each}}
     </table>
 </template>
