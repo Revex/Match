@@ -8,7 +8,7 @@ Router.map(function() {
     _routerContext = this;
     SetupDefaultRoute("home");
     SetupHomeRoutes();
-    SetupItemsRoutes();
+    SetupItemRoutes();
 });
 
 function SetupDefaultRoute(routeName) {
@@ -34,7 +34,7 @@ function SetupHomeRoutes() {
     });
 }
 
-function SetupItemsRoutes() {
+function SetupItemRoutes() {
     _routerContext.route('itemList', {
         path: '/item/'
     });

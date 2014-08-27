@@ -1,7 +1,12 @@
 <template name="itemEdit">
     <h1>Item Edit</h1>
-    Item Name:
-    <span>{{name}}</span>
+     <div>
+    	<input type="text" id="itemName" value="{{name}}" />
+    	<input type="hidden" id="itemId" value="{{_id}}" />
+    	<br />
+    	<button class="btn" type="submit"> Create Item </button>
+    </div>
+
     <br />
     <br />
 
