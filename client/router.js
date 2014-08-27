@@ -38,19 +38,30 @@ function SetupItemRoutes() {
     _routerContext.route('itemList', {
         path: '/item/'
     });
-     _routerContext.route('itemCreate', {
+    _routerContext.route('itemCreate', {
         path: 'item/create'
     });
     _routerContext.route('itemDetails', {
         path: '/item/details/:_id',
-        data: function() { return Items.findOne(this.params._id) } 
+        data: function() {
+            var item = Items.findOne(this.params._id);
+            if (item != null)
+                return item;
+            else //TODO announce that the item has been deleted or is no longer available, 
+                //and when the user confirms they understand they will be navigated back to the list
+                Router.go('itemList');
+        }
     });
     _routerContext.route('itemEdit', {
         path: 'item/edit/:_id',
-        data: function() { return Items.findOne(this.params._id) }
+        data: function() {
+            return Items.findOne(this.params._id)
+        }
     });
-   _routerContext.route('itemDelete', {
+    _routerContext.route('itemDelete', {
         path: 'item/delete/:_id',
-        data: function() { return Items.findOne(this.params._id) }
+        data: function() {
+            return Items.findOne(this.params._id)
+        }
     });
 }

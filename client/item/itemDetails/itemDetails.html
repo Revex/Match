@@ -1,6 +1,23 @@
 <template name="itemDetails">
     <h1>Item Details</h1>
-    Item Name: <span>{{name}}</span>
+    Item Name:
+    <span>{{name}}</span>
+    <input type="hidden" id="itemId" value="{{_id}}" />
+    <div>
+        Notes ({{ notes.length }}) :
+        <ul class="nav nav-list">
+            {{#each notes}}
+            <li>
+                {{text}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+    <br />
+    <br />
+    <a href="#" id="createNewNote">Add New Note to Item</a>
+    <input type="text" id="newNoteInputText" style="display:none;" value="{{newNoteText}}" />
+    <button id="submitNewNote" style="display:none;" class="btn btn-success">Add Note</button>
     <br />
     <br />
 
