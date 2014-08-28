@@ -23,7 +23,9 @@ Template.itemDetails.events({
                 _id: itemId
             }, {
                 $addToSet: {
-                    notes: { text : noteText}
+                    notes: {
+                        text: noteText
+                    }
                 }
             });
         }
@@ -36,20 +38,26 @@ Template.itemDetails.events({
         $("#createNewNote").show();
     },
 
-    "change .fileupload-input": function(event, template){
+    "change .fileupload-input": function(event, template) {
         var func = this;
         var file = event.currentTarget.files[0];
         var reader = new FileReader();
         reader.onload = function(fileLoadEvent) {
             var itemId = $("#itemId").val();
             //Meteor.call('file-upload', file, fileLoadEvent.target.result, itemId);
-            Meteor.call('file-upload', file, reader.result, itemId);
+            console.log(file.name + " file started being uploaded");
+            var startTime = new Date();
+            Meteor.call('file-upload', file, reader.result, itemId, function(error, result) {
+                //async callback for meteor server call
+                var completionTime = new Date();
+                completionTime = completionTime - startTime;
+                console.log(file.name + " file completed upload " + completionTime);
+            });
         };
-        reader.onprogress = function(e, fileName)
-        {
+        reader.onprogress = function(e, fileName) {
             var percentage = Math.round((e.loaded * 100) / e.total);
 
-            console.log('Loaded : '+percentage+'%'+' of '+fileName);
+            console.log('Loaded : ' + percentage + '%' + ' of ' + fileName);
         };
         reader.readAsDataURL(file);
     }
