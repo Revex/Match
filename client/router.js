@@ -45,11 +45,11 @@ function SetupItemRoutes() {
         path: '/item/details/:_id',
         data: function() {
             var item = Items.findOne(this.params._id);
-            if (item != null)
+            //if (item != null)
                 return item;
-            else //TODO announce that the item has been deleted or is no longer available, 
+            //else //TODO announce that the item has been deleted or is no longer available,
                 //and when the user confirms they understand they will be navigated back to the list
-                Router.go('itemList');
+             //   Router.go('itemList');
         }
     });
     _routerContext.route('itemEdit', {

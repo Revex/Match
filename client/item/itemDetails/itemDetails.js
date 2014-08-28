@@ -34,5 +34,23 @@ Template.itemDetails.events({
         $("#submitNewNote").hide();
         //show the the button/link to add new note
         $("#createNewNote").show();
+    },
+
+    "change .fileupload-input": function(event, template){
+        var func = this;
+        var file = event.currentTarget.files[0];
+        var reader = new FileReader();
+        reader.onload = function(fileLoadEvent) {
+            var itemId = $("#itemId").val();
+            //Meteor.call('file-upload', file, fileLoadEvent.target.result, itemId);
+            Meteor.call('file-upload', file, reader.result, itemId);
+        };
+        reader.onprogress = function(e, fileName)
+        {
+            var percentage = Math.round((e.loaded * 100) / e.total);
+
+            console.log('Loaded : '+percentage+'%'+' of '+fileName);
+        };
+        reader.readAsDataURL(file);
     }
 });

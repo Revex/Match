@@ -1,8 +1,10 @@
 <template name="itemDetails">
     <h1>Item Details</h1>
+
     Item Name:
     <span>{{name}}</span>
     <input type="hidden" id="itemId" value="{{_id}}" />
+
     <div>
         Notes ({{ notes.length }}) :
         <ul class="nav nav-list">
@@ -13,11 +15,32 @@
             {{/each}}
         </ul>
     </div>
+
+    File Name: <span>{{ fileName }}</span>
+    <br />
+    <img id="myImage" src="{{fileData}}" alt="picture goes here" />
+    <br />
+
     <br />
     <br />
-    <a href="#" id="createNewNote">Add New Note to Item</a>
-    <input type="text" id="newNoteInputText" style="display:none;" value="{{newNoteText}}" />
-    <button id="submitNewNote" style="display:none;" class="btn btn-success">Add Note</button>
+
+    <div>
+        <a href="#" id="createNewNote">Add New Note to Item</a>
+        <input type="text" id="newNoteInputText" style="display:none;" value="{{newNoteText}}" />
+        <button id="submitNewNote" style="display:none;" class="btn btn-success">Add Note</button>
+    </div>
+
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+        <span class="btn btn-file">
+            <span class="fileupload-new">{{fileupload.label.de}}</span>
+            <span class="fileupload-exists">Andere</span>
+            <input name="{{fileupload.name}}" class="fileupload-input" method="{{fileupload.method}}" type="file"/>
+        </span>
+        <span class="fileupload-preview"></span>
+        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+    </div>
+
+
     <br />
     <br />
 
